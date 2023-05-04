@@ -1,6 +1,6 @@
 @import "../../../styles/settings.scss";
 
-.container {
+.header {
   background-color: $background-gray;
   height: 80px;
   display: flex;
@@ -9,12 +9,64 @@
   padding: 0px 200px;
 
   .logo {
-    background-color: $white;
     font-size: 30px;
     text-transform: uppercase;
     font-weight: 600;
-    padding: 10px;
-    border-radius: 20%;
-    
+
+    .dot {
+      color: $main-red;
+    }
   }  
+
+  .user {
+    background-color: $white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+
+    .image {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .username {
+      p:first-of-type {
+        font-weight: 600;
+      }
+      p:last-of-type {
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+// RWD settings
+
+@media (max-width: 992px) {
+  .header {
+    padding: 0px 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0px 40px;
+  }
+}
+
+@media (max-width: 368px) {
+  .header {
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+
+    .logo {
+      margin-bottom: 10px;
+    }
+  }
 }
