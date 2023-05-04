@@ -1,0 +1,98 @@
+@import "../../../styles/settings.scss";
+
+.container {
+  background-color: $background-gray;
+  padding: 40px 200px;
+
+  .hero {
+    background-color: $light-orange;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    
+    .image {
+      height: 200px;
+      padding: 20px 50px;
+    }
+
+    .text {
+      padding: 0px 10px;
+
+      h1 {
+        font-size: 34px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-weight: 300;
+
+        span {
+          color: $main-red;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+// RWD settings
+
+@media (max-width: 992px) {
+  .container {
+    padding: 40px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    .hero {
+      .image {
+        padding: 10px;
+      }
+      .text {
+        h1 {
+          font-size: 26px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 40px;
+    .hero {
+      flex-direction: column;
+      .image {
+        padding: 5px;
+      }
+      .text {
+        margin-top: 10px;
+        text-align: center;
+        h1 {
+          font-size: 26px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 368px) {
+  .container {
+    padding: 0px 20px 20px;
+    .hero {
+      .image {
+        height: 150px;
+      }
+    }
+  }
+}

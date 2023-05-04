@@ -9,11 +9,12 @@ const Topbar = () => {
       </div>
       <div className={styles.user}>
         <img
-        className={styles.image}
-        alt="User photo"
-        src={`${process.env.PUBLIC_URL}/images/gordon.png`} />
+          className={styles.image}
+          alt="User photo"
+          src={`${process.env.PUBLIC_URL}/images/gordon.png`} 
+        />
         <div className={styles.username}>
-          <p>Hi, Gordon</p>
+          <p>Gordon R.</p>
           <p>Chef</p>
         </div>
       </div>
