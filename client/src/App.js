@@ -1,17 +1,22 @@
 import './styles/global.scss';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Topbar from './components/common/Topbar/Topbar';
-import MenuForm from './components/features/MenuForm/MenuForm';
+import Home from './components/pages/Home/Home';
+import Form from './components/pages/Form/Form';
+import Error from './components/pages/Error/Error'
 import Footer from './components/common/Footer/Footer';
-import Hero from './components/common/Hero/Hero';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Topbar />
-      <Hero />
-      <MenuForm />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/error" element={<Error />} />
+      </Routes>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 

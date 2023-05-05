@@ -1,0 +1,22 @@
+@import "../../../styles/settings.scss";
+
+.footer {
+  height: 30px;
+  background-color: $background-gray;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    &:hover {
+      color: $hover;
+    }
+  }
+}

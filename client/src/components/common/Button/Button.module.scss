@@ -1,0 +1,21 @@
+@import "../../../styles/settings.scss";
+
+.button {
+  background-color: $main-red;
+  margin: 20px 0px;
+  padding: 20px 70px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+
+  a {
+
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: $hover;
+  }
+}

@@ -1,22 +1,17 @@
 export const options = [
   {
-    label: 'Choose one option'
-  },
-  {
+    id: 1,
     label: 'Pizza',
     value: 'pizza',
-    time: '00:20:00',
-    slices: 8,
-    baseDiameter: 15
   },
   {
+    id: 2,
     label: 'Soup',
     value: 'soup',
-    time: '00:30:00'
   },
   {
+    id: 3,
     label: 'Sandwich',
     value: 'sandwich',
-    time: '00:10:00'
   }
 ]

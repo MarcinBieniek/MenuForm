@@ -1,15 +1,16 @@
 import styles from './MenuForm.module.scss';
 import {useState} from 'react';
 import { options } from '../../../simpleData/data';
+import Button from '../../common/Button/Button';
 
 const MenuForm = () => {
 
   const [name, setName] = useState('');
   const [dishType, setDishType] = useState('')
-  const [time, setTime] = useState('');
-  const [slices, setSlices] = useState('')
-  const [diameter, setDiameter] = useState('')
-  const [spiciness, setSpiciness] = useState('')
+  const [time, setTime] = useState('00:10:00');
+  const [slices, setSlices] = useState('4')
+  const [diameter, setDiameter] = useState('15')
+  const [spiciness, setSpiciness] = useState('5')
   const [breadSlices, setBreadSlices] = useState('1')
 
   console.log('name:', name)
@@ -27,7 +28,8 @@ const MenuForm = () => {
 
   return (
     <section className={styles.container}>
-      <h1>Start creating</h1>
+      <h1>Step 1</h1>
+      <p>Choose fancy name and select type of dish</p>
       <form className={styles.form}>
         
         <div className={styles.field}>
@@ -52,14 +54,24 @@ const MenuForm = () => {
             required
             name="dish_type_input"
           >
+            <option disabled value="">
+              Wybierz danie
+            </option>
             {options.map((option, id) => (
-              <option value={option.value} key={id}>{option.label}</option>
+              <option 
+                value={option.value} 
+                key={id}
+              >
+                {option.label}
+              </option>
             ))}
           </select>
         </div>
 
         {dishType === 'pizza' && (
           <>
+            <h1>Step 2</h1>
+            <p>Add details</p>
             <div className={styles.field}>
               <label htmlFor="time">
                 Preparation time
@@ -69,7 +81,7 @@ const MenuForm = () => {
                 id="time"
                 step="1"
                 pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                defaultValue={options[1].time}
+                value={time}
                 onChange={handleTime}
                 required 
                 name="time_input"
@@ -84,7 +96,7 @@ const MenuForm = () => {
                 min="1"
                 max="8"
                 placeholder="Type here..."
-                defaultValue={options[1].slices}
+                value={slices}
                 onChange={(e) => setSlices(e.target.value)}
                 required 
                 name="slices_input"
@@ -99,7 +111,7 @@ const MenuForm = () => {
                 step="0.1"
                 min="15"
                 max="45"
-                defaultValue={options[1].baseDiameter}
+                value={diameter}
                 onChange={(e) => setDiameter(e.target.value)}
                 required 
                 name="diameter_input"
@@ -110,6 +122,8 @@ const MenuForm = () => {
 
         {dishType === 'soup' && (
           <>
+            <h1>Step 2</h1>
+            <p>Add details</p>
             <div className={styles.field}>
               <label htmlFor="time">
                 Preparation time
@@ -119,7 +133,7 @@ const MenuForm = () => {
                 id="time"
                 step="1"
                 pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                defaultValue={options[2].time}
+                value={time}
                 onChange={handleTime}
                 name="time_input"
                 required 
@@ -147,6 +161,8 @@ const MenuForm = () => {
 
         {dishType === 'sandwich' && (
           <>
+            <h1>Step 2</h1>
+            <p>Add details</p>
             <div className={styles.field}>
               <label htmlFor="time">
                 Preparation time
@@ -156,7 +172,7 @@ const MenuForm = () => {
                 id="time"
                 step="1"
                 pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                defaultValue={options[3].time}
+                value={time}
                 onChange={handleTime}
                 required 
                 name="time_input"
@@ -181,6 +197,7 @@ const MenuForm = () => {
         )}
 
       </form>
+      <Button label="Submit form" />
     </section>
   )
 }
