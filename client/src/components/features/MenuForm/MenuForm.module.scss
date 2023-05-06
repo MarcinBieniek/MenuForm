@@ -16,25 +16,61 @@
   }
 
   .form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+
+    h1 {
+      margin: 5px 0px;
+      font-size: 18px;
+
+      &:last-of-type {
+        margin-top: 20px;
+      }
+    }
+
+    p {
+      margin: 5px 0px 20px;
+      font-size: 14px;
+    }
 
     .field {
       display: flex;
       flex-direction: column;
 
       label {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 10px;
+
       }
 
       input {
-        width: 293px;
+        width: 253px;
         margin-bottom: 10px;
+        border-radius: 25px;
+        padding: 20px;
+        border: solid 1px black;
       }
 
       select{
-        width: 300px;
+        width: 295px;
+        margin-bottom: 10px;
+        border-radius: 25px;
+        padding: 20px;
+        border: solid 1px black;
+      }
+
+      .error {
+        color: $main-red;
+        font-size: 14px;
         margin-bottom: 10px;
       }
     }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

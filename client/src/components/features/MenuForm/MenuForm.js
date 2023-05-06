@@ -1,5 +1,4 @@
 import styles from './MenuForm.module.scss';
-import shortid from 'shortid';
 import {useState} from 'react';
 import { options } from '../../../simpleData/data';
 import { addDish } from '../../../redux/dishesRedux';
@@ -10,7 +9,6 @@ const MenuForm = () => {
 
   const dispatch = useDispatch();
 
-  const id = shortid();
   const [name, setName] = useState('');
   const [dishType, setDishType] = useState('')
   const [time, setTime] = useState('00:10:00');
@@ -18,6 +16,7 @@ const MenuForm = () => {
   const [diameter, setDiameter] = useState('15')
   const [spiciness, setSpiciness] = useState('5')
   const [breadSlices, setBreadSlices] = useState('1')
+  const [error, setError] = useState('')
 
   const handleTime = (event) => {
     setTime('')
@@ -28,56 +27,64 @@ const MenuForm = () => {
     event.preventDefault();
 
     let newDish
-
     if (dishType === 'pizza') {
       newDish = {
-        id,
         name,
-        dishType,
-        time,
-        slices,
+        type: dishType,
+        preparation_time: time,
+        no_of_slices: slices,
         diameter
       }
     } else if (dishType === 'soup') {
       newDish = {
-        id,
         name,
-        dishType,
-        time,
-        spiciness
+        type: dishType,
+        preparation_time: time,
+        spiciness_scale: spiciness
       }
     } else if (dishType === 'sandwich') {
       newDish = {
-        id,
-        name,
-        dishType,
-        time,
-        breadSlices
+        name: name,
+        type: dishType,
+        preparation_time: time,
+        slices_of_bread: breadSlices
       }
     }
 
-    console.log('newDish', newDish)
-
     dispatch(addDish(newDish));
+    console.log(newDish)
+
+    fetch('https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newDish)
+    })
+    .then(response => response.json())
+    .then(data => console.log('datais', data))
+    .catch(error => setError(error.message));
     
   };
 
   return (
     <section className={styles.container}>
-      <h1>Step 1</h1>
-      <p>Choose fancy name and select type of dish</p>
       <form className={styles.form} onSubmit={handleSubmit}>
+        
+        <h1>Step 1</h1>
+        <p>Choose the name and select type of the dish</p>
         
         <div className={styles.field}>
           <label htmlFor="name">Add dish name:</label>
+          
           <input 
             type="text" 
             id="name" 
             placeholder="Type here..."
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required 
             name="name_input"
+            required
           />
         </div>
 
@@ -216,7 +223,7 @@ const MenuForm = () => {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="bread-slices">Set diameter</label>
+              <label htmlFor="bread-slices">Slices of bread</label>
               <input 
                 type="number" 
                 id="bread-slices" 
@@ -231,7 +238,9 @@ const MenuForm = () => {
             </div>
           </>
         )}
-      <Button label="Submit form" type="submit"/>
+      <div className={styles.button}>
+        <Button label="Submit form" type="submit"/>
+      </div>
       </form>
       
     </section>
