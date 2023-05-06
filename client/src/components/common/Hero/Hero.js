@@ -1,21 +1,20 @@
 import styles from './Hero.module.scss'
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 const Hero = () => {
   return (
-    <section className={styles.container}>
-      <div className={styles.hero}>
-        <img
-          className={styles.image}
-          alt="User photo"
-          src={`${process.env.PUBLIC_URL}/images/cook.png`} 
-        />
-        <div className={styles.text}>
-          <h1>Hello Gordon</h1>
-          <p>Welcome to your personal <span>menu app.</span></p>
-          <p>Start to create <span>new</span> dishes!</p>
-        </div>
-      </div>  
-    </section>
+    <div className={styles.hero}>
+      <img
+        className={styles.image}
+        alt="Background photo"
+        src={`${process.env.PUBLIC_URL}/images/bg2.jpg`} 
+      />
+      <div className={styles.quote}>
+        <FormatQuoteIcon className={styles.icon}/>
+        <span>People who love to eat are always the best people.</span>
+        <span>Julia Child</span>
+      </div>
+    </div>
   )
 }
 

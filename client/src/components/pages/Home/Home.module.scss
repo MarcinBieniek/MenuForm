@@ -1,7 +1,35 @@
 @import "../../../styles/settings.scss";
 
 .home {
-  height: calc(100vh - 110px);
-  background-color: $background-gray;
-  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  background-color: $background-brown;
+  display: flex;
+
+  .left {
+    flex: 1; 
+
+    .greetings {
+      height: calc(100% - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+
+      h1 {
+        margin: 0;
+        font-size: 60px;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .right {
+    flex: 1.2;
+    margin: 20px;
+  }
 }

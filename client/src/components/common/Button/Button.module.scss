@@ -1,17 +1,16 @@
 @import "../../../styles/settings.scss";
 
 .button {
-  background-color: $main-red;
+  background-color: $main-green;
   margin: 20px 0px;
   padding: 20px 70px;
   border: none;
-  border-radius: 25px;
+  border-radius: 15px;
   font-size: 18px;
   color: white;
-  cursor: pointer;
+  pointer: cursor;
 
   a {
-
     text-decoration: none;
   }
 
