@@ -1,10 +1,16 @@
 import styles from './MenuForm.module.scss';
+import shortid from 'shortid';
 import {useState} from 'react';
 import { options } from '../../../simpleData/data';
+import { addDish } from '../../../redux/dishesRedux';
+import { useDispatch } from 'react-redux';
 import Button from '../../common/Button/Button';
 
 const MenuForm = () => {
 
+  const dispatch = useDispatch();
+
+  const id = shortid();
   const [name, setName] = useState('');
   const [dishType, setDishType] = useState('')
   const [time, setTime] = useState('00:10:00');
@@ -13,24 +19,54 @@ const MenuForm = () => {
   const [spiciness, setSpiciness] = useState('5')
   const [breadSlices, setBreadSlices] = useState('1')
 
-  console.log('name:', name)
-  console.log('dishType:', dishType)
-  console.log('time:', time)
-  console.log('slices:', slices)
-  console.log('diameter:', diameter)
-  console.log('spiciness:', spiciness)
-  console.log('breadSlices:', breadSlices)
-
   const handleTime = (event) => {
     setTime('')
     setTime(event.target.value);
   }
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let newDish
+
+    if (dishType === 'pizza') {
+      newDish = {
+        id,
+        name,
+        dishType,
+        time,
+        slices,
+        diameter
+      }
+    } else if (dishType === 'soup') {
+      newDish = {
+        id,
+        name,
+        dishType,
+        time,
+        spiciness
+      }
+    } else if (dishType === 'sandwich') {
+      newDish = {
+        id,
+        name,
+        dishType,
+        time,
+        breadSlices
+      }
+    }
+
+    console.log('newDish', newDish)
+
+    dispatch(addDish(newDish));
+    
+  };
+
   return (
     <section className={styles.container}>
       <h1>Step 1</h1>
       <p>Choose fancy name and select type of dish</p>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         
         <div className={styles.field}>
           <label htmlFor="name">Add dish name:</label>
@@ -195,9 +231,9 @@ const MenuForm = () => {
             </div>
           </>
         )}
-
+      <Button label="Submit form" type="submit"/>
       </form>
-      <Button label="Submit form" />
+      
     </section>
   )
 }
