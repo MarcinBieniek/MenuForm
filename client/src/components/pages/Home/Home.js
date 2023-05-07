@@ -5,8 +5,8 @@ import Hero from '../../common/Hero/Hero';
 
 const Home = () => {
   return (
-    <div className={styles.home}>
-      <div className={styles.left}>
+    <main className={styles.home}>
+      <section className={styles.left}>
         <Topbar />
         <div className={styles.greetings}>
           <h1>Hi, Gordon!</h1>
@@ -16,12 +16,13 @@ const Home = () => {
             label={'+ Add new dish'} 
             link={'/form'}
           />
+          <a href="https://marcindev.netlify.app/" className={styles.link}>Marcin Bieniek @ 2023</a>
         </div>
-      </div>
-      <div className={styles.right}>
-        <Hero />
-      </div>
-    </div>
+      </section>
+      <section className={styles.right}>
+        <Hero image={'bg2.jpg'} quote={'People who love to eat are always the best people'} author={'Julia Child'} />
+      </section>
+    </main>
   )
 }
 

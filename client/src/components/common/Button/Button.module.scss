@@ -2,13 +2,14 @@
 
 .button {
   background-color: $main-green;
-  margin: 20px 0px;
-  padding: 20px 70px;
+  margin: 30px 0px 0px;
+  padding: 10px 70px;
   border: none;
   border-radius: 15px;
   font-size: 18px;
   color: white;
   pointer: cursor;
+  width: 100%;
 
   a {
     text-decoration: none;

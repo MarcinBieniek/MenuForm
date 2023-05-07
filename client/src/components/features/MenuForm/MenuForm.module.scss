@@ -2,11 +2,11 @@
 
 .container {
   background-color: $background-gray;
-  padding: 20px 200px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 
   h1 {
     font-size: 26px;
@@ -16,9 +16,10 @@
   }
 
   .form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 25px;
+    padding: 10px 20px 0px;
+    border-radius: 15px;
+    background-color: $white;
+    width: 450px;
 
     h1 {
       margin: 5px 0px;
@@ -41,23 +42,23 @@
       label {
         font-size: 16px;
         margin-bottom: 10px;
-
       }
 
       input {
-        width: 253px;
+        width: 100%;
         margin-bottom: 10px;
-        border-radius: 25px;
-        padding: 20px;
-        border: solid 1px black;
+        border-radius: 15px;
+        padding: 10px;
+        border: solid 1px $border;
       }
 
       select{
-        width: 295px;
+        width: 100%;
         margin-bottom: 10px;
-        border-radius: 25px;
-        padding: 20px;
-        border: solid 1px black;
+        border-radius: 15px;
+        padding: 10px;
+        border: solid 1px $border;
+        color: $gray;
       }
 
       .error {
@@ -66,11 +67,24 @@
         margin-bottom: 10px;
       }
     }
-  }
+  
+    .alert {
+      text-align: center;
+      margin-top: 20px;
 
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      .success {
+        background-color: $main-green;
+        color: white;
+        padding: 10px;
+        border-radius: 15px;
+      }
+    
+
+    }
+
+    .spinner {
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 }

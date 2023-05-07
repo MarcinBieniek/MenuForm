@@ -2,6 +2,7 @@
 
 .home {
   height: 100vh;
+  max-height: 100%;
   width: 100vw;
   max-width: 100%;
   background-color: $background-brown;
@@ -25,11 +26,21 @@
       p {
         margin: 0;
       }
+
+      .link {
+        text-decoration: none;
+        color: $black;
+        margin-top: 40px;
+
+        &:hover {
+          color: $main-red;
+        }
+      }
     }
   }
 
   .right {
-    flex: 1.2;
+    flex: 1;
     margin: 20px;
   }
 }
