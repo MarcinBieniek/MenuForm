@@ -1,29 +1,31 @@
 import styles from './MenuForm.module.scss';
-import {useState} from 'react';
-import { options } from '../../../simpleData/data';
-import { addDish } from '../../../redux/dishesRedux';
-import { useDispatch } from 'react-redux';
-import Button from '../../common/Button/Button';
-import { API_URL } from '../../../config';
+import {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from "react-router-dom";
+import { options } from '../../../simpleData/data';
+import Button from '../../common/Button/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { addDishAsync } from '../../../redux/thunks';
+import { getActualStatus } from '../../../redux/statusRedux';
 
+import {  } from 'react-redux';
 
 const MenuForm = () => {
+
+  const status = useSelector(getActualStatus)
+  console.log('status is', status)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
-  const [dishType, setDishType] = useState('')
+  const [dishType, setDishType] = useState('');
   const [time, setTime] = useState('00:10:00');
-  const [slices, setSlices] = useState('4')
-  const [diameter, setDiameter] = useState('15')
-  const [spiciness, setSpiciness] = useState('5')
-  const [breadSlices, setBreadSlices] = useState('1')
-  const [error, setError] = useState('')
-  const [status, setStatus] = useState('null')
+  const [slices, setSlices] = useState('4');
+  const [diameter, setDiameter] = useState('15');
+  const [spiciness, setSpiciness] = useState('5');
+  const [breadSlices, setBreadSlices] = useState('1');
 
   const handleTime = (event) => {
     setTime('')
@@ -42,41 +44,17 @@ const MenuForm = () => {
       ...(dishType === 'sandwich' && { slices_of_bread: breadSlices }),
     };
 
-    dispatch(addDish(newDish));
     console.log(newDish)
+    dispatch(addDishAsync(newDish));
+  }
 
-    // WIP
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newDish)
-    }
-
-    setStatus('loading')
-    fetch(`${API_URL}`, options)
-    .then(res => {
-      if (res.status === 200) {
-        setStatus('success');
+  useEffect(() => {
+      if (status == 'success') {
         setTimeout(() => {
           navigate('/')
-        }, 2000);
-      } else if (res.status === 400) {
-        setStatus('clientError');
-      } else {
-        setStatus('serverError');
+        }, 1000);
       }
-    })
-    .catch(err => {
-      setStatus('serverError: ', err)
-    })
-  };
-
-  console.log('status is', status)
-
-  // WIP end (spinner, redux thunk, hero)
+  }, [status]);
 
   return (
     <section className={styles.container}>
@@ -235,15 +213,15 @@ const MenuForm = () => {
         <Button label="Submit form" type="submit"/>
 
         <div className={styles.alert}>
-          { status === "success" &&
+          { status == "success" &&
             <p className={styles.success}>Success! You'll be redirected to main page.</p>
           }
-          { status === "serverError" &&
+          { status == "error" &&
             <p className={styles.failure}>Something went wrong. Try again.</p>
           }
         </div>
 
-        { status === "loading" &&
+        { status == "loading" &&
           <Box className={styles.spinner}>
             <CircularProgress />
           </Box>

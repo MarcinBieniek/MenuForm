@@ -1,17 +1,25 @@
-import { createStore,combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import initialState from './InitialState';
 import dishesReducer from './dishesRedux';
+import thunk from 'redux-thunk';
+import statusReducer from './statusRedux';
 
 const subreducers = {
-  dishes: dishesReducer
+  dishes: dishesReducer,
+  status: statusReducer
 }
 
 const reducer = combineReducers(subreducers)
 
+const storeEnhancers = compose(
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 const store = createStore(
   reducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  storeEnhancers
 );
 
 export default store;

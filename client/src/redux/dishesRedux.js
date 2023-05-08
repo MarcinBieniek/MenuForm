@@ -11,7 +11,8 @@ const dishesReducer = (statePart = [], action = {}) => {
       return [...statePart, action.payload]
     default:
       return statePart;
-  };
+  }
 };
 
 export default dishesReducer;
+
