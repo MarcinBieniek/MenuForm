@@ -20,7 +20,11 @@ const Home = () => {
         </div>
       </section>
       <section className={styles.right}>
-        <Hero image={'bg2.jpg'} quote={'People who love to eat are always the best people'} author={'Julia Child'} />
+        <Hero 
+          image={'bg-2.jpg'} 
+          quote={'People who love to eat are always the best people'} 
+          author={'Julia Child'} 
+        />
       </section>
     </main>
   )

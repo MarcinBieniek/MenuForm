@@ -35,6 +35,7 @@ export const addDishAsync = (newDish) => {
       .catch(err => {
         dispatch(clearStatus())
         dispatch(updateStatus('error'));
+        console.log('error is:', err)
       });
   };
 };

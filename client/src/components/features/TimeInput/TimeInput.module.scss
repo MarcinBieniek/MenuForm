@@ -1,0 +1,19 @@
+@import "../../../styles/settings.scss";
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    border: solid 1px $border;
+  }
+}

@@ -16,7 +16,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 65%;
+    bottom: 10%;
     left: 3%;
     color: $white;
 
@@ -34,6 +34,54 @@
       &:last-of-type {
         font-size: 30px;
         font-style: italic;
+      }
+    }
+  }
+}
+
+// RWD
+
+@media (max-width: 1130px) {
+  .hero {
+    .quote {
+      span {
+        font-size: 30px;
+        &:last-of-type {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    .quote {
+      top: 20%;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .hero {
+    .quote {
+      top: 25%;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .hero {
+    .quote {
+      top: 10%;
+      .icon {
+        display: none;
+      }
+      span {
+        font-size: 26px;
+        &:last-of-type {
+          display: none;
+        }
       }
     }
   }

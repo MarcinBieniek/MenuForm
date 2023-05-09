@@ -29,3 +29,22 @@
     margin: 20px;
   }
 }
+
+// RWD
+
+@media (max-width: 729px) {
+  .form {
+    flex-direction: column;
+    .left {
+      .icon {
+        left: 5px;
+        bottom: 5px;
+      }
+    }
+
+    .right {
+      display: none;
+    }
+  }
+}
+

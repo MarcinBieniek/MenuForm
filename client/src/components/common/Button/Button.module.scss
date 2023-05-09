@@ -19,3 +19,9 @@
     background-color: $hover;
   }
 }
+
+@media (max-width: 729px) {
+  .button {
+    font-size: 14px;
+  }
+}

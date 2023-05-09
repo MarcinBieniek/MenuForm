@@ -8,8 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { addDishAsync } from '../../../redux/thunks';
 import { getActualStatus } from '../../../redux/statusRedux';
-
-import {  } from 'react-redux';
+import TimeInput from '../TimeInput/TimeInput';
 
 const MenuForm = () => {
 
@@ -28,7 +27,6 @@ const MenuForm = () => {
   const [breadSlices, setBreadSlices] = useState('1');
 
   const handleTime = (event) => {
-    setTime('')
     setTime(event.target.value);
   }
 
@@ -97,20 +95,9 @@ const MenuForm = () => {
 
         {dishType === 'pizza' && (
           <>
-            <div className={styles.field}>
-              <label htmlFor="time">
-                Preparation time
-              </label>
-              <input
-                type="time"
-                id="time"
-                step="1"
-                pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                value={time}
-                onChange={handleTime}
-                required 
-              />
-            </div>  
+            <p>Accept the proposed values ​​or add new.</p>
+            
+            <TimeInput time={time} onTimeChange={handleTime}/>
             
             <div className={styles.field}>
               <label htmlFor="slices">Add number of slices</label>
@@ -144,20 +131,9 @@ const MenuForm = () => {
 
         {dishType === 'soup' && (
           <>
-            <div className={styles.field}>
-              <label htmlFor="time">
-                Preparation time
-              </label>
-              <input
-                type="time"
-                id="time"
-                step="1"
-                pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                value={time}
-                onChange={handleTime}
-                required 
-              />
-            </div>
+            <p>Accept the proposed values ​​or add new.</p>
+
+            <TimeInput time={time} onTimeChange={handleTime}/>
 
             <div className={styles.field}>
               <label htmlFor="spiciness">
@@ -179,20 +155,9 @@ const MenuForm = () => {
 
         {dishType === 'sandwich' && (
           <>
-            <div className={styles.field}>
-              <label htmlFor="time">
-                Preparation time
-              </label>
-              <input
-                type="time"
-                id="time"
-                step="1"
-                pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"
-                value={time}
-                onChange={handleTime}
-                required 
-              />
-            </div>
+            <p>Accept the proposed values ​​or add new.</p>
+
+            <TimeInput time={time} onTimeChange={handleTime}/>
 
             <div className={styles.field}>
               <label htmlFor="bread-slices">Slices of bread</label>
