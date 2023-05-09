@@ -13,7 +13,6 @@ import TimeInput from '../TimeInput/TimeInput';
 const MenuForm = () => {
 
   const status = useSelector(getActualStatus)
-  console.log('status is', status)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +41,6 @@ const MenuForm = () => {
       ...(dishType === 'sandwich' && { slices_of_bread: breadSlices }),
     };
 
-    console.log(newDish)
     dispatch(addDishAsync(newDish));
   }
 
@@ -96,7 +94,7 @@ const MenuForm = () => {
         {dishType === 'pizza' && (
           <>
             <p>Accept the proposed values ​​or add new.</p>
-            
+
             <TimeInput time={time} onTimeChange={handleTime}/>
             
             <div className={styles.field}>
